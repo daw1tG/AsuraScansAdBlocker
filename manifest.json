@@ -1,0 +1,41 @@
+{
+    "manifest_version": 3,
+    "name": "Comic Site Ad Blocker",
+    "version": "1.0.0",
+
+    "action":{},
+
+    "permissions": [
+        "activeTab", "scripting", "tabs", "webNavigation",
+        "declarativeNetRequest", "declarativeNetRequestWithHostAccess"
+    ],
+    "host_permissions": [
+        "*://*/*"
+    ],
+
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts":[
+        {
+            "matches": ["*://*.asuracomic.net/*"],
+            "js": ["content.js"],
+            "run_at": "document_end"
+        }
+    ],
+
+    "declarative_net_request": {
+        "rule_resources": [
+            {
+                "id": "popup_block_rules",
+                "enabled": true,
+                "path": "rules.json"
+            }
+        ]
+    },
+    
+    "icons": {
+        "16": "icons/ad-blocker (1).png",
+        "128": "icons/ad-blocker.png"
+  }
+}

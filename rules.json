@@ -1,0 +1,124 @@
+[
+    {
+      "id": 1,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "urlFilter": "popads.net",
+        "resourceTypes": ["main_frame"]
+      }
+    },
+    {
+      "id": 2,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "urlFilter": "clickadu.com",
+        "resourceTypes": ["main_frame"]
+      }
+    },
+    {
+      "id": 3,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "urlFilter": "pushredirect.net",
+        "resourceTypes": ["main_frame"]
+      }
+    },
+    {
+      "id": 4,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "urlFilter": "thotbots.ai",
+        "resourceTypes": ["main_frame"]
+      }
+    },
+    {
+      "id": 5,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "urlFilter": "reddit.com",
+        "resourceTypes": ["main_frame"]
+      }
+    },
+    {
+      "id": 6,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "urlFilter": "mediasama.com",
+        "resourceTypes": ["main_frame"]
+      }
+    },
+    {
+      "id": 7,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "urlFilter": "theeverydaygame.com",
+        "resourceTypes": ["main_frame"]
+      }
+    },
+    {
+      "id": 8,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "urlFilter": "lust-goddess.com",
+        "resourceTypes": ["main_frame"]
+      }
+    },
+    {
+      "id": 9,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "urlFilter": "hornyvilla.com",
+        "resourceTypes": ["main_frame"]
+      }
+    },
+    {
+      "id": 10,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "urlFilter": "lp1.joi.com",
+        "resourceTypes": ["main_frame"]
+      }
+    },
+    {
+      "id": 11,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "urlFilter": "cagorite.z6.web.core.windows.net",
+        "resourceTypes": ["main_frame"]
+      }
+    }
+]
+
