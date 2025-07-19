@@ -32,7 +32,7 @@ function directDelete() {
         console.log("removing: " + adLoader.outerHTML);
         adLoader.remove();
     } else{
-        console.log('awww narts');
+        console.log('cnx loader not found');
     }
 
     
@@ -41,6 +41,11 @@ function directDelete() {
             div.parentNode.remove()
         }
     })
+
+    let button = document.querySelector('button[aria-label="Close promotion"')
+    if (button){
+        button.click()
+    }
 
 }
 
@@ -68,7 +73,7 @@ if (!observer){
                         }
                         else if (m.getAttribute("class")){
                             for (let pattern of patterns){
-                                if (m.id.match(pattern)){
+                                if (m.getAttribute("class").match(pattern)){
                                     console.log(`removing: ${m.outerHTML}`)
                                     m.remove()
                                 }
@@ -123,3 +128,5 @@ window.addEventListener("hashchange", function() {
     })
     
   });
+
+window.addEventListener('load', directDelete)

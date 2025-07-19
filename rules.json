@@ -44,17 +44,6 @@
       }
     },
     {
-      "id": 5,
-      "priority": 1,
-      "action": {
-        "type": "block"
-      },
-      "condition": {
-        "urlFilter": "reddit.com",
-        "resourceTypes": ["main_frame"]
-      }
-    },
-    {
       "id": 6,
       "priority": 1,
       "action": {
