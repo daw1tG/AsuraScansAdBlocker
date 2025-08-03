@@ -1,13 +1,13 @@
 {
     "manifest_version": 3,
     "name": "Comic Site Ad Blocker",
-    "version": "1.0.0",
+    "version": "2.1.1",
 
     "action":{},
 
     "permissions": [
         "activeTab", "scripting", "tabs", "webNavigation",
-        "declarativeNetRequest", "declarativeNetRequestWithHostAccess"
+        "declarativeNetRequest", "declarativeNetRequestWithHostAccess", "nativeMessaging"
     ],
     "host_permissions": [
         "*://*/*"
@@ -20,6 +20,11 @@
         {
             "matches": ["*://*.asuracomic.net/*"],
             "js": ["content.js"],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["*://*.asuracomic.net/series/*"],
+            "js": ["history.js"],
             "run_at": "document_end"
         }
     ],

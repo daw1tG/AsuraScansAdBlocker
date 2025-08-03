@@ -116,17 +116,17 @@ if (!observer2){
     observer.observe(targetNode2, config)
 }
 
-window.addEventListener("hashchange", function() {
-    console.log("URL hash changed:", window.location.hash);
-    document.querySelectorAll("h2").forEach((h2) => {
-        let target;
-        if (h2.outerHTML.match(/.+ASURA\++./)){
-            console.log(h2.outerHTML)
-            target = (h2.parentElement).parentElement
-            target.remove()
-        }
-    })
+// window.addEventListener("load", function() {
+//     console.log("URL hash changed:", window.location.hash);
+//     document.querySelectorAll("h2").forEach((h2) => {
+//         let target;
+//         if (h2.outerHTML.match(/.+ASURA\++./)){
+//             console.log(h2.outerHTML)
+//             target = (h2.parentElement).parentElement
+//             target.remove()
+//         }
+//     })
     
-  });
+//   });
 
 window.addEventListener('load', directDelete)
