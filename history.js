@@ -1,8 +1,14 @@
 function injectHistory(chapterNum, comic){
+    let targets = [];
     let target;
     document.querySelectorAll("h3").forEach(h3 =>{
-        if(h3.textContent === "New Chapter" || h3.textContent.match(/S[0-9]/)){target = h3}
+        if(h3.textContent === "New Chapter" || h3.textContent.match(/S[0-9]/))
+        {
+            targets.push(h3) // there are multiple h3's that match regex if there are multiple seasons in the comic
+        }
     })
+    // grab correct h3
+    target = targets[0]
     target.textContent = "Last Read"
 
     let div = target.parentNode
