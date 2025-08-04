@@ -1,7 +1,7 @@
-function injectHistory(chapterNum){
+function injectHistory(chapterNum, comic){
     let target;
     document.querySelectorAll("h3").forEach(h3 =>{
-        if(h3.textContent === "New Chapter"){target = h3}
+        if(h3.textContent === "New Chapter" || h3.textContent.match(/S[0-9]/)){target = h3}
     })
     target.textContent = "Last Read"
 
@@ -10,14 +10,11 @@ function injectHistory(chapterNum){
     num.textContent = chapterNum
     
     let a = div.parentNode
-    let string = a.href.split("/")
-    string[string.length-1] = chapterNum
-    a.href = string.join("")
+    a.href = `${comic}/chapter/${chapterNum}`
 }
 
 function readingHistory(){
     const message = {}
-    const result = 0;
     const pathname = window.location.pathname
     let parts = pathname.split("/")
     if (parts.length == 3){
@@ -25,15 +22,17 @@ function readingHistory(){
         const [,,comic] = parts
         message.comic = comic
 
-        chrome.runtime.sendMessage(message, (response)=>{
-            console.log("history retrieved", response);
-            result = response;
-        })
-        try{
-            injectHistory(result)
-        } catch (err){
-            console.error(err)
+        const chapter = localStorage.getItem([message.comic])
+        if (chapter){
+            injectHistory(chapter, comic)
         }
+
+        // chrome.runtime.sendMessage(message, (response)=>{
+        //     console.log("history retrieved", response);
+        //     if (response){
+        //         injectHistory(response)
+        //     }
+        // })
         
     }
     if (parts.length == 5){
@@ -42,9 +41,11 @@ function readingHistory(){
         message.comic = comic
         message.chapter = chapter
 
-        chrome.runtime.sendMessage(message, (response)=>{
-            console.log("chapter updated", response);
-        })
+        localStorage.setItem(message.comic, message.chapter)
+
+        // chrome.runtime.sendMessage(message, (response)=>{
+        //     console.log("chapter updated", response);
+        // })
     }
 }
 

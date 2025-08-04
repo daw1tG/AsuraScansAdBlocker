@@ -6,11 +6,11 @@ function directDelete() {
             ads.push(div)  
         }
     })
-    console.log(ads)
-        for (let ad of ads){
-            console.log("removing: " + ad.outerHTML)
-            ad.remove()
-        }
+    //console.log(ads)
+    for (let ad of ads){
+        //console.log("removing: " + ad.outerHTML)
+        ad.remove()
+    }
 
     if (document.querySelector("body").childNodes[0].nodeName !== "HEADER"){
         document.querySelector("body").childNodes[0].remove()
@@ -20,7 +20,7 @@ function directDelete() {
         let target;
 
         if (h2.childNodes.length === 2 && h2.childNodes[0].nodeName === "SPAN" && h2.childNodes[0].childNodes[0].textContent === "ASURA+"){
-            console.log(`got ya: ${h2.outerHTML}`)
+            console.log(`ausra + ad: ${h2.outerHTML}`)
             target = (h2.parentElement).parentElement.parentElement
             target.remove()
         }
@@ -31,9 +31,10 @@ function directDelete() {
     if (adLoader) {
         console.log("removing: " + adLoader.outerHTML);
         adLoader.remove();
-    } else{
-        console.log('cnx loader not found');
-    }
+    } 
+    // else{
+    //     //console.log('cnx loader not found');
+    // }
 
     
     document.querySelectorAll("div:has(h2)").forEach((div)=>{
@@ -66,7 +67,7 @@ if (!observer){
                         if (m.getAttribute("id")){
                             for (let pattern of patterns){
                                 if (m.id.match(pattern)){
-                                    console.log(`removing: ${m.outerHTML}`)
+                                    //console.log(`removing: ${m.outerHTML}`)
                                     m.remove()
                                 }
                             }
@@ -74,7 +75,7 @@ if (!observer){
                         else if (m.getAttribute("class")){
                             for (let pattern of patterns){
                                 if (m.getAttribute("class").match(pattern)){
-                                    console.log(`removing: ${m.outerHTML}`)
+                                    //console.log(`removing: ${m.outerHTML}`)
                                     m.remove()
                                 }
                             }
