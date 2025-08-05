@@ -1,22 +1,32 @@
 function injectHistory(chapterNum, comic){
-    let targets = [];
     let target;
-    document.querySelectorAll("h3").forEach(h3 =>{
-        if(h3.textContent === "New Chapter" || h3.textContent.match(/S[0-9]/))
-        {
-            targets.push(h3) // there are multiple h3's that match regex if there are multiple seasons in the comic
-        }
-    })
-    // grab correct h3
-    target = targets[0]
-    target.textContent = "Last Read"
 
-    let div = target.parentNode
-    let num = div.querySelector("span")
+    let chapterButtonsGroup = document.querySelector("div.grid-cols-2")
+    target = chapterButtonsGroup.childNodes[1] // latest chapter button
+    target.href = `${comic}/chapter/${chapterNum}`
+
+    let num = target.querySelector("span")
     num.textContent = chapterNum
+
+    target.childNodes[0].childNodes[0].textContent = "Last Read"
+
+    // let targets = []
+    // document.querySelectorAll("h3").forEach(h3 =>{
+    //     if(h3.textContent === "New Chapter" || h3.textContent.match(/S[0-9]/))
+    //     {
+    //         targets.push(h3) // there are multiple h3's that match regex if there are multiple seasons in the comic
+    //     }
+    // })
+    // // grab correct h3
+    // target = targets[0]
+    // target.textContent = "Last Read"
+
+    // let div = target.parentNode
+    // let num = div.querySelector("span")
+    // num.textContent = chapterNum
     
-    let a = div.parentNode
-    a.href = `${comic}/chapter/${chapterNum}`
+    // let a = div.parentNode
+    // a.href = `${comic}/chapter/${chapterNum}`
 }
 
 function readingHistory(){
