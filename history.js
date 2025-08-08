@@ -1,32 +1,41 @@
+// function injectHistory(chapterNum, comic){
+//     alert("running inject history")
+//     let target;
+
+//     let chapterButtonsGroup = document.querySelector("div.grid-cols-2")
+//     target = chapterButtonsGroup.childNodes[1] // latest chapter button
+//     target.href = `${comic}/chapter/${chapterNum}`
+
+//     let num = target.querySelector("span")
+//     num.textContent = chapterNum
+
+//     target.childNodes[0].childNodes[0].textContent = "Last Read"
+// }
+
 function injectHistory(chapterNum, comic){
-    let target;
+    console.log("creating container")
 
-    let chapterButtonsGroup = document.querySelector("div.grid-cols-2")
-    target = chapterButtonsGroup.childNodes[1] // latest chapter button
-    target.href = `${comic}/chapter/${chapterNum}`
+    const container = document.createElement("a");
+    container.id = "my-extension-ui";
+    container.style.position = "fixed";
+    container.style.bottom = "20px";
+    container.style.right = "20px";
+    container.style.background = "#9140e3"
+    container.style.color = "white"
+    container.style.padding = "10px";
+    container.style.zIndex = "999999";
+    container.style.borderRadius = "5px"
+    container.href = `${comic}/chapter/${chapterNum}`
 
-    let num = target.querySelector("span")
-    num.textContent = chapterNum
 
-    target.childNodes[0].childNodes[0].textContent = "Last Read"
+    container.textContent = `Last Read: ${chapterNum}`;
 
-    // let targets = []
-    // document.querySelectorAll("h3").forEach(h3 =>{
-    //     if(h3.textContent === "New Chapter" || h3.textContent.match(/S[0-9]/))
-    //     {
-    //         targets.push(h3) // there are multiple h3's that match regex if there are multiple seasons in the comic
-    //     }
-    // })
-    // // grab correct h3
-    // target = targets[0]
-    // target.textContent = "Last Read"
-
-    // let div = target.parentNode
-    // let num = div.querySelector("span")
-    // num.textContent = chapterNum
-    
-    // let a = div.parentNode
-    // a.href = `${comic}/chapter/${chapterNum}`
+    document.body.appendChild(container);
+}
+function removeUID(string){
+    let parts = string.split("-")
+    parts.pop()
+    return parts.join("-")
 }
 
 function readingHistory(){
@@ -36,7 +45,7 @@ function readingHistory(){
     if (parts.length == 3){
         message.reason = "get history"
         const [,,comic] = parts
-        message.comic = comic
+        message.comic = removeUID(comic)
 
         const chapter = localStorage.getItem([message.comic])
         if (chapter){
@@ -54,9 +63,10 @@ function readingHistory(){
     if (parts.length == 5){
         message.reason = "update history"
         const [,,comic,,chapter] = parts
-        message.comic = comic
+        message.comic = removeUID(comic)
         message.chapter = chapter
 
+        console.log(`setting item: {${message.comic}: ${message.chapter}}`)
         localStorage.setItem(message.comic, message.chapter)
 
         // chrome.runtime.sendMessage(message, (response)=>{
@@ -65,4 +75,9 @@ function readingHistory(){
     }
 }
 
-window.addEventListener("load", () => readingHistory())
+window.addEventListener("load", () => {
+    console.log("running readingHistory")
+    readingHistory();
+    //setTimeout(readingHistory, 1000)
+}) // wait for react hydration
+
